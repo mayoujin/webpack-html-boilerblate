@@ -1,0 +1,24 @@
+diff --git a/node_modules/posthtml-expressions/lib/index.js b/node_modules/posthtml-expressions/lib/index.js
+index 55df9d7..07ddd45 100644
+--- a/node_modules/posthtml-expressions/lib/index.js
++++ b/node_modules/posthtml-expressions/lib/index.js
+@@ -52,7 +52,7 @@ function executeLoop (params, p1, p2, locals, tree) {
+  * @return {Function} walk Walks the tree and parses all locals in scope
+  */
+ function executeScope (scope, locals, node) {
+-  scope = Object.assign(locals, scope)
++  scope = { ...scope, ...locals }
+ 
+   return walk({ locals: scope }, node.content)
+ }
+@@ -385,7 +384,9 @@ function walk (opts, nodes) {
+       if (!node.attrs || !node.attrs.with) {
+         throw new Error(`the "${scopes[0]}" tag must have a "with" attribute`)
+       }
+-
++      if (node.attrs.with.startsWith('{') && node.attrs.with.endsWith('}')) { 
++        node.attrs.with = ['(() => (', node.attrs.with, '))();'].join('');
++      }
+       const target = vm.runInContext(node.attrs.with, ctx)
+ 
+       // handle additional syntax errors

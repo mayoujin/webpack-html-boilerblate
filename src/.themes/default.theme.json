@@ -1,0 +1,4 @@
+{
+  "platforms": ["desktop"],
+  "sources": ["./src/.themes/tokens/*.tokens.yml"]
+}

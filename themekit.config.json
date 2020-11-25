@@ -1,0 +1,38 @@
+{
+  "entry": {
+    "default": "./src/.themes/default.theme.json"
+  },
+  "output": {
+    "css": {
+      "transforms": ["name/cti/kebab"],
+      "buildPath": "./src/css/2-design-tokens/themes",
+      "files": [
+        {
+          "destination": "[entry]/_color.pcss",
+          "format": "scss/variables",
+          "filter": "whitepaper/color",
+          "options": {
+            "useAliasVariables": true
+          }
+        },
+        {
+          "destination": "[entry]/color.pcss",
+          "format": "css/variables",
+          "filter": "whitepaper/color",
+          "options": {
+            "useAliasVariables": true
+          },
+          "actions": ["process-color"]
+        },
+        {
+          "destination": "[entry]/root.pcss",
+          "format": "css/variables",
+          "filter": "whitepaper/root",
+          "options": {
+            "useAliasVariables": true
+          }
+        }
+      ]
+    }
+  }
+}
