@@ -1,0 +1,27 @@
+{
+    "modules": false,
+    "plugins": {
+        "postcss-easy-import": {
+            "extensions": ['.css', '.pcss']
+        },
+        "postcss-advanced-variables": {},
+        "postcss-color-function": {
+            preserveCustomProps: true
+        },
+        "postcss-bem-fix": {
+            style: 'bem',
+            separators: {
+                modifier: '--'
+            },
+            shortcuts: {
+                component: 'b',
+                descendent: 'e',
+                modifier: 'm'
+            }
+        },
+        "tailwindcss": {},
+        "postcss-nested": {},
+        "postcss-nesting": {},
+        "autoprefixer": {}
+    }
+}

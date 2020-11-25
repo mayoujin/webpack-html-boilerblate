@@ -1,0 +1,14 @@
+color:
+  # base
+  primary:
+    value: "#000"
+  secondary:
+    value: "#eee"
+  # text
+  text: 
+    heavy:
+      value: "#000"
+    medium:
+      value: "#666"
+    contrary:
+      value: "#fff"  

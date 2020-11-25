@@ -1,0 +1,62 @@
+diff --git a/node_modules/posthtml-modules/index.js b/node_modules/posthtml-modules/index.js
+index 9c8752a..db040ad 100644
+--- a/node_modules/posthtml-modules/index.js
++++ b/node_modules/posthtml-modules/index.js
+@@ -17,7 +17,8 @@ const expressions = require('posthtml-expressions');
+ function processNodeContentWithPosthtml(node, options) {
+   return function (content) {
+     return processWithPostHtml(options.plugins, path.join(path.dirname(options.from), node.attrs[options.attribute]), content, [
+-      parseLocals(node.attrs.locals)
++      parseLocals(node.attrs.locals),
++      collectNamespacedLocals(node.attrs)
+     ]);
+   };
+ }
+@@ -35,6 +36,29 @@ function parseLocals(locals) {
+   }
+ }
+ 
++function hasNamespacedLocals(attrs) { 
++  return Object.keys(attrs).some(attr => attr.startsWith('locals:'));
++}
++
++function collectNamespacedLocals(attrs) {
++  try {
++    const locals = Object.entries(attrs)
++      .filter(([attr]) => attr.startsWith('locals:'))
++      .map(([attr, value]) => {
++        return [attr.split(':').slice(1), value];
++      }).reduce((result, [attr, value]) => {
++        return {
++          ...result,
++          [attr]: value
++        }
++      }, {});
++
++    return expressions({ locals });
++  } catch {
++    return () => {};
++  }
++}
++
+ /**
+ * readFile
+ * @param  {Object} options  [plugin options object]
+@@ -71,10 +95,14 @@ function parse(options) {
+             const content = tree.match(match('content'), () => {
+               if (
+                 node.content &&
+-                node.attrs &&
+-                isJSON(node.attrs.locals)
++                node.attrs
+               ) {
+-                return parseLocals(node.attrs.locals)(node.content);
++                if (isJSON(node.attrs.locals)) { 
++                  return parseLocals(node.attrs.locals)(node.content);
++                }
++                if (hasNamespacedLocals(node.attrs)) {
++                  return collectNamespacedLocals(node.attrs)(node.content);
++                }
+               }              
+ 
+               return node.content || '';

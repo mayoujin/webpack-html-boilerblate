@@ -1,0 +1,11 @@
+color:
+  primary-:
+    darken:
+        value: "color($color-primary shade(20%))"
+    lighten:
+        value: "color($color-primary tint(20%))"
+  secondary-:
+    darken:
+        value: "color($color-secondary shade(20%))"
+    lighten:
+        value: "color($color-secondary tint(20%))"
