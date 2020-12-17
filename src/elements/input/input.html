@@ -1,0 +1,24 @@
+<scope with="{
+    type: 'text',
+    placeholder: 'placeholder',
+    lbl: '',
+    icon: '',
+    before: '',
+    after: '',
+    btn: ''
+    }">
+    <inp
+        bem:b
+        bem:m="{{ lbl && '.w-lbl' }}{{ icon && '.w-icon' }}{{ before && '.w-before' }}{{ after && '.w-after' }}{{ btn && '.w-btn' }}"
+    >
+        <wrapper>
+            <!-- Add-on -->
+            <input type="text" placeholder="{{ placeholder }}"/>
+            <!-- Label -->
+            <if condition="lbl">
+                <label>{{ placeholder }}</label>
+            </if>
+        </wrapper>
+        <content></content>
+    </inp>
+</scope>

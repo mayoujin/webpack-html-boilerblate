@@ -1,2 +1,26 @@
 @layer base {
+  html, body {
+    font-family: var(--typo-primary-font-family);
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--typo-heading-font-family);
+    color: var(--color-text-heading);
+  }
+  h1 {
+    @apply text-4xl;
+  }
+  h2 {
+    @apply text-2xl;
+  }
+
+  input {
+    @apply px-5 py-3 rounded;
+    height: 50px;
+    background-color: var(--input-base-fill-color-base);
+    color: var(--input-base-typo-base);
+    &::placeholder {
+      color: var(--input-base-placeholder-base);
+    }
+  }
 }

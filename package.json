@@ -1,5 +1,5 @@
 {
-  "name": "webpack-html-boilerplate",
+  "name": "is-com-ru-frontend",
   "license": "MIT",
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack serve --config .webpack/config.dev.js",

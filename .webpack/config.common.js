@@ -40,6 +40,7 @@ module.exports = {
   resolve: {
     alias: {
       "@": paths.src,
+      "ui": paths.ui,
       src: paths.src,
     },
     extensions: ["*.html", ".js", ".css", ".pcss"],
@@ -142,7 +143,7 @@ module.exports = {
             loader: "file-loader",
             options: {
               outputPath: "img/",
-              publicPath: "img/",
+              publicPath: "/img/",
               name: "[name].[ext]",
             },
           },

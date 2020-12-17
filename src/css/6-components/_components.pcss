@@ -1,0 +1,92 @@
+@layer components {
+  @b btn {
+    @apply h-12 px-16 rounded whitespace-nowrap;
+    @apply text-xl leading-5;
+
+    --height: 48px;
+    height: var(--height);
+
+    &.disabled,
+    &:disabled,
+    &[disabled] {
+      cursor: not-allowed;
+    }
+
+    @m primary {
+      color: var(--button-primary-typo);
+      background-color: var(--button-primary-fill-color);
+    }
+
+    @m secondary {
+      color: var(--button-secondary-typo-base);
+      background-color: var(--button-secondary-fill-color-base);
+      &.disabled,
+      &:disabled,
+      &[disabled] {
+        background-color: var(--button-secondary-fill-color-disabled);
+        color: var(--button-secondary-typo-disabled);
+      }
+    }
+
+    @m outline {
+      border: var(--button-outline-border-base);
+      color: var(--button-outline-typo-base);
+      background-color: var(--button-outline-fill-color-base);
+      &.disabled,
+      &:disabled,
+      &[disabled] {
+        border: var(--button-outline-border-disabled);
+        background-color: var(--button-outline-fill-color-disabled);
+        color: var(--button-outline-typo-disabled);
+      }
+    }
+
+    @m error {
+      background-color: var(--color-controls-type-error-base-fill-color);
+      border: 1px solid var(--color-controls-type-error-base-border-color);
+      color: var(--color-controls-type-error-base-typo);
+    }
+
+    @m info {
+      background-color: var(--color-controls-type-info-base-fill-color);
+      color: var(--color-controls-type-info-base-typo);
+    }
+
+    @m tag {
+      @apply relative;
+      color: var(--button-secondary-typo-base);
+      background-color: var(--button-secondary-fill-color-base);
+      border-radius: calc(var(--height) / 2) !important;
+      &:after {
+        @apply absolute;
+        content: "✕";
+        right: 15px;
+        pointer-events: all;
+      }
+    }
+
+    @m xl {
+      --height: 60px;
+      @apply rounded-md;
+      @apply px-16;
+      //height: 60px;
+    }
+    @m lg {
+      --height: 48px;
+      @apply rounded;
+      @apply px-16;
+      //height: 48px;
+    }
+    @m md {
+      --height: 40px;
+      @apply rounded;
+      @apply text-base leading-6;
+      //height: 40px;
+    }
+    @m sm {
+      --height: 32px;
+      @apply h-8 rounded;
+      @apply text-sm leading-5;
+    }
+  }
+}

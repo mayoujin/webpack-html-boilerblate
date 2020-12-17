@@ -12,4 +12,6 @@ module.exports = {
 
   // Static files that get copied to build folder
   views: path.resolve(__dirname, "../src/views"),
+
+  ui: path.resolve(__dirname, "../src/elements"),
 };

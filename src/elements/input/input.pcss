@@ -1,0 +1,131 @@
+@b inp {
+  --transition: all 300ms;
+  @apply flex;
+  @apply overflow-hidden rounded;
+  background-color: var(--input-base-fill-color-base);
+  color: var(--input-base-typo-base);
+
+  @e wrapper {
+    @apply relative;
+    order: 2;
+  }
+
+  @m w-icon @e wrapper {
+    /*
+    @apply relative;
+    &::after {
+      @apply absolute;
+      content: " ";
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    */
+  }
+
+  @m w-btn @e btn {
+    @apply block;
+  }
+
+  @e icon {
+    order: 4;
+  }
+
+  @e btn {
+    order: 5;
+  }
+
+  @e before, @e after {
+    @apply flex;
+    @apply text-heavy opacity-20;
+    padding-left: 18px;
+    padding-right: 18px;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    line-height: 24px;
+    /* identical to box height, or 120% */
+    text-align: center;
+    letter-spacing: 0.38px;
+  }
+
+  @e before {
+    @apply hidden;
+    order: 1;
+    border-right: 1px solid ;
+  }
+
+  @e after {
+    @apply hidden;
+    order: 6;
+    border-left: 1px solid ;
+  }
+
+  @m w-before @e before {
+    @apply flex;
+  }
+
+  @m w-after @e after {
+    @apply flex;
+  }
+
+  @e input {
+    @apply flex-1;
+  }
+
+  @m w-lbl @e input {
+    &:not(:placeholder-shown) {
+      &::placeholder {
+        opacity: 0;
+        transition: var(--transition);
+      }
+      padding-top: 20px;
+      padding-bottom: 4px;
+      transition: var(--transition);
+    }
+    /* Show the label at desired position when the placeholder of input isn't shown */
+    &:not(:placeholder-shown) + label {
+      @apply opacity-100;
+      /*background: #FFF;*/
+      transform: translate(0, -50%);
+    }
+  }
+
+  @e label {
+    @apply hidden;
+  }
+
+  @e label {
+    @apply opacity-0 absolute top-0 left-0;
+    @apply text-xs;
+    color: var(--input-base-placeholder-base);
+    top: 3px;
+    /* Position the label */
+    @apply ml-5 mt-3;
+    /*
+        position: absolute;
+        opacity: 0;
+
+        */
+
+    /* Hide it by default */
+    transition: var(--transition);
+    transition: opacity 200ms;
+  }
+
+  @m w-lbl @e label {
+    @apply block;
+  }
+}
+
+.btn--eye {
+  @apply px-4 box-content;
+  width: 22px;
+  background: url(/src/img/eye.svg) no-repeat center;
+}
+
+.icon--success {
+  @apply px-4 box-content;
+  width: 12px;
+  background: url(/src/img/check.svg) no-repeat center;
+}

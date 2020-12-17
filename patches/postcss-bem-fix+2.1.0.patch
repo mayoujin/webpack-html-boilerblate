@@ -1,0 +1,54 @@
+diff --git a/node_modules/postcss-bem-fix/index.js b/node_modules/postcss-bem-fix/index.js
+index 5365e0f..748df69 100644
+--- a/node_modules/postcss-bem-fix/index.js
++++ b/node_modules/postcss-bem-fix/index.js
+@@ -56,17 +56,48 @@ module.exports = postcss.plugin('postcss-bem', function (opts) {
+         var newName;
+         var last;
+         var newRule;
++
++        var shortcuts = Object.values(opts.shortcuts).map((s) => '@' + s);
++        var iscomplexRule = shortcuts
++            .some((shortcut) => rule.params.includes(shortcut));
++
+         if (checkRuleMatches('modifier', rule)) {
+             separator = currentConfig.separators.modifier;
+         } else if (checkRuleMatches('descendent', rule)) {
+             separator = currentConfig.separators.descendent;
+         }
+ 
++        if (iscomplexRule) {
++            var subAtRule = rule.params.split('@');
++            var subAtRuleParts = subAtRule[1].split(' ');
++            var atRuleName = subAtRuleParts.shift();
++            newRule = postcss.atRule({
++                name: atRuleName,
++                params: subAtRuleParts.join(' '),
++                parent: rule.parent,
++                raws: rule.raws,
++                source: rule.source,
++                nodes: rule.nodes
++            });
++
++            separator += subAtRule[0] + '.' + name;
++
++            if (checkRuleMatches('modifier', newRule)) {
++                separator += currentConfig.separators.modifier;
++            } else if (checkRuleMatches('descendent', newRule)) {
++                separator += currentConfig.separators.descendent;
++            }
++
++            rule.name = atRuleName;
++            rule.params = subAtRuleParts.join(' ');
++        }
++
+         if(separator) {
+             newName = name + separator + rule.params;
+             newRule = postcss.rule({
+                 selector: '.' + newName,
+-                source: rule.source
++                source: rule.source,
++                between: ' '
+             });
+             container.insertAfter(after, newRule);
+             last = newRule;

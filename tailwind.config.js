@@ -10,14 +10,13 @@ module.exports = {
         heavy: "var(--color-text-heavy)",
         contrary: "var(--color-text-contrary)",
         medium: "var(--color-text-medium)",
-        light: "var(--color-text-light)",
       },
       spacing: {},
     },
     fontFamily: {
-      // primary: ["Blogger Sans", "sans-serif"],
-      // secondary: ["Inter", "sans-serif"],
-      // body: ["Inter", "sans-serif"],
+      primary: "var(--typo-primary)",
+      body: "var(--typo-primary)",
+      secondary: "var(--typo-secondary)",
     },
     screens: {
       // mobile: { max: "767px" },

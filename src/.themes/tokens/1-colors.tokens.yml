@@ -1,14 +1,69 @@
 color:
   # base
   primary:
-    value: "#000"
+    value: "#0054A6"
+  primaryLight:
+    value: "rgba(51, 105, 231, 0.1);"
+  info:
+    value: "#0054A6"
+  success:
+    value: "#0054A6"
+  warning:
+    value: "#FD9426"
+  error:
+    value: "#E23135"
+  errorLight:
+    value: "#FCEAEB"
   secondary:
-    value: "#eee"
+    value: "#F2F2F2"
+
   # text
-  text: 
+  text:
     heavy:
       value: "#000"
     medium:
-      value: "#666"
+      value: "#333"
+    light:
+      value: "#A7A7AB"
     contrary:
-      value: "#fff"  
+      value: "#fff"
+    heading:
+      value: "{color.text.heavy.value}"
+
+  # controls
+  controls:
+    type:
+      action:
+        base:
+          fillColor:
+            value: "{color.primary.value}"
+          typo:
+            value: "#fff"
+
+      error:
+        base:
+          fillColor:
+            value: "{color.errorLight.value}"
+          typo:
+            value: "{color.error.value}"
+          borderColor:
+            value: "{color.error.value}"
+
+      info:
+        base:
+          fillColor:
+            value: "{color.primaryLight.value}"
+          typo:
+            value: "{color.primary.value}"
+
+      secondary:
+        base:
+          fillColor:
+            value: "{color.secondary.value}"
+          typo:
+            value: "{color.text.medium.value}"
+        disabled:
+          fillColor:
+            value: "{color.secondary.value}"
+          typo:
+            value: "{color.text.light.value}"

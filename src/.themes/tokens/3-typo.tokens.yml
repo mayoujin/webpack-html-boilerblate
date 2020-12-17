@@ -1,0 +1,18 @@
+typo:
+  primary:
+    fontFamily:
+      value: "Rubik, sans-serif"
+  secondary:
+    fontFamily:
+      value: "Raleway, sans-serif"
+
+  heading:
+    fontFamily:
+      value: "{typo.primary.fontFamily.value}"
+
+  control:
+    fontFamily:
+      value: "{typo.secondary.fontFamily.value}"
+
+
+

@@ -1,0 +1,59 @@
+button:
+  primary:
+    fillColor:
+      value: "{color.controls.type.action.base.fillColor.value}"
+    typo:
+      value: "{color.controls.type.action.base.typo.value}"
+
+  secondary:
+    fillColor:
+      base:
+        value: "{color.controls.type.secondary.base.fillColor.value}"
+      disabled:
+        value: "{color.controls.type.secondary.base.fillColor.value}"
+    typo:
+      base:
+        value: "{color.controls.type.secondary.base.typo.value}"
+      disabled:
+        value: "#A7A7AB"
+
+  outline:
+    border:
+      base:
+        value: "1px solid rgba(0, 84, 166, 0.2);"
+      disabled:
+        value: "1px solid #A7A7AB"
+    fillColor:
+      base:
+        value: "transparent"
+      disabled:
+        value: "transparent"
+    typo:
+      base:
+        value: "{color.controls.type.action.base.fillColor.value}"
+      disabled:
+        value: "#A7A7AB"
+
+  info:
+    fillColor:
+      base:
+        value: "{color.controls.type.info.base.fillColor.value}"
+    typo:
+      base:
+        value: "{color.controls.type.info.base.typo.value}"
+
+input:
+  base:
+    fillColor:
+      base:
+        value: "{color.controls.type.secondary.base.fillColor.value}"
+      disabled:
+        value: "{color.controls.type.secondary.base.fillColor.value}"
+    typo:
+      base:
+        value: "#1C1C1E"
+      disabled:
+        value: "#A7A7AB"
+    placeholder:
+      base:
+        value: "#B3B3B3"
